@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Poll;
 use Livewire\Component;
+// use Livewire\Attributes\On;
 
 class CreatePoll extends Component
 {
@@ -41,6 +42,7 @@ class CreatePoll extends Component
         $this->validateOnly($propertyName);
     }
 
+    // #[On('pollCreated')]
     public function createPoll()
     {
         // $poll = Poll::create([
@@ -62,5 +64,6 @@ class CreatePoll extends Component
         );
 
         $this->reset(['title', 'options']);
+        $this->dispatch('pollCreated');
     }
 }
